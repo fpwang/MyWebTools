@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoSign", "AutoSign\AutoSign.csproj", "{9087C49A-941F-4EC4-9949-D3059350A39A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TechTest", "TechTest\TechTest.csproj", "{7F7F135C-34FE-415B-8114-E51923C90DEF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +15,10 @@ Global
 		{9087C49A-941F-4EC4-9949-D3059350A39A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9087C49A-941F-4EC4-9949-D3059350A39A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9087C49A-941F-4EC4-9949-D3059350A39A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F7F135C-34FE-415B-8114-E51923C90DEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F7F135C-34FE-415B-8114-E51923C90DEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F7F135C-34FE-415B-8114-E51923C90DEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F7F135C-34FE-415B-8114-E51923C90DEF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

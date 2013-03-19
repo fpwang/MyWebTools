@@ -1,4 +1,6 @@
-﻿namespace AutoSign
+﻿using AutoSign.Properties;
+
+namespace AutoSign
 {
     partial class FormMain
     {
@@ -34,9 +36,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 262);
+            this.ClientSize = new System.Drawing.Size(641, 562);
             this.Name = "FormMain";
-            this.Text = "自动签到";
+            this.Text = "AutoSign自动签到工具";
             this.ResumeLayout(false);
 
         }
