@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
 namespace AutoSign
 {
-    static class Program
+    public static class Program
     {
         /// <summary>
         /// 应用程序的主入口点。

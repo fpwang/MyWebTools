@@ -1,8 +1,8 @@
-﻿using AutoSign.Properties;
+using AutoSign.Properties;
 
 namespace AutoSign
 {
-    partial class FormMain
+    public partial class FormMain
     {
         /// <summary>
         /// 必需的设计器变量。
@@ -37,6 +37,7 @@ namespace AutoSign
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(641, 562);
+            this.IsMdiContainer = true;
             this.Name = "FormMain";
             this.Text = "AutoSign自动签到工具";
             this.ResumeLayout(false);
