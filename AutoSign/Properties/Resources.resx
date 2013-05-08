@@ -121,6 +121,9 @@
   <data name="AutoSignIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\kworldclock.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="strConfigFileName" xml:space="preserve">
+    <value>\AutoSign\AutoSign.config</value>
+  </data>
   <data name="strMainFormTitle" xml:space="preserve">
     <value>AutoSign自动签到工具</value>
     <comment>主窗体标题</comment>

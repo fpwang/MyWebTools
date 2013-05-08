@@ -71,6 +71,15 @@ namespace AutoSign.Properties {
         }
         
         /// <summary>
+        ///   查找类似 \AutoSign\AutoSign.config 的本地化字符串。
+        /// </summary>
+        internal static string strConfigFileName {
+            get {
+                return ResourceManager.GetString("strConfigFileName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 AutoSign自动签到工具 的本地化字符串。
         /// </summary>
         internal static string strMainFormTitle {

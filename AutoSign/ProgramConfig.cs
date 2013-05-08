@@ -7,21 +7,38 @@ namespace AutoSign
 {
     public class ProgramConfig
     {
+
 		/// <summary>
 		/// 主窗体参数
 		/// </summary>
-		private MainFormConfig m_MainFormCfg;
+		private FormConfig m_MainForm;
+		/// <summary>
+		/// 配置文件路径
+		/// </summary>
+		private string m_ConfigFilePath;
 
     
 		/// <summary>
 		/// 主窗体参数
 		/// </summary>
-		public MainFormConfig MainFormCfg{
+		public FormConfig MainForm{
 			get{
-				return m_MainFormCfg;
+				return m_MainForm;
 			}
 			set{
-				m_MainFormCfg = value;
+				m_MainForm = value;
+			}
+		}
+
+		/// <summary>
+		/// 配置文件路径
+		/// </summary>
+		public string ConfigFilePath{
+			get{
+				return m_ConfigFilePath;
+			}
+			set{
+				m_ConfigFilePath = value;
 			}
 		}
 }

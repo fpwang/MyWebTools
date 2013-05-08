@@ -11,6 +11,11 @@ namespace AutoSign
 {
     public partial class FormMain : Form
     {
+		/// <summary>
+		/// 程序配置数据
+		/// </summary>
+		private ProgramConfig m_Config=new ProgramConfig();
+
         public FormMain()
         {
             InitializeComponent();
@@ -20,6 +25,7 @@ namespace AutoSign
         {
             this.Visible = false;
             this.Hide();
+            this.Config.ConfigFilePath=System.Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)+ Properties.Resources.strConfigFileName;
         }
 
 
@@ -59,6 +65,18 @@ namespace AutoSign
                 this.Hide();
             }
         }
+
+		/// <summary>
+		/// 程序配置数据
+		/// </summary>
+		public ProgramConfig Config{
+			get{
+				return m_Config;
+			}
+			set{
+				m_Config = value;
+			}
+		}
 
     }
 }
