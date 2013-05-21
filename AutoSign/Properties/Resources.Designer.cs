@@ -80,11 +80,29 @@ namespace AutoSign.Properties {
         }
         
         /// <summary>
+        ///   查找类似 文件访问错误 的本地化字符串。
+        /// </summary>
+        internal static string strFileErrorMessageBoxTitle {
+            get {
+                return ResourceManager.GetString("strFileErrorMessageBoxTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 AutoSign自动签到工具 的本地化字符串。
         /// </summary>
         internal static string strMainFormTitle {
             get {
                 return ResourceManager.GetString("strMainFormTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 写入文件{filename}时发生错误,请检查是否具有相应的权限 的本地化字符串。
+        /// </summary>
+        internal static string strSaveFileErrorMessage {
+            get {
+                return ResourceManager.GetString("strSaveFileErrorMessage", resourceCulture);
             }
         }
     }

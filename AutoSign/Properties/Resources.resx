@@ -124,8 +124,14 @@
   <data name="strConfigFileName" xml:space="preserve">
     <value>\AutoSign\AutoSign.config</value>
   </data>
+  <data name="strFileErrorMessageBoxTitle" xml:space="preserve">
+    <value>文件访问错误</value>
+  </data>
   <data name="strMainFormTitle" xml:space="preserve">
     <value>AutoSign自动签到工具</value>
     <comment>主窗体标题</comment>
+  </data>
+  <data name="strSaveFileErrorMessage" xml:space="preserve">
+    <value>写入文件{filename}时发生错误,请检查是否具有相应的权限</value>
   </data>
 </root>

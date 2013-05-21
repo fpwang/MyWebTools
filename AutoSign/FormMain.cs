@@ -25,7 +25,9 @@ namespace AutoSign
         {
             this.Visible = false;
             this.Hide();
-            this.Config.ConfigFilePath=System.Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)+ Properties.Resources.strConfigFileName;
+            this.Config.ConfigFileName=System.Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)+ Properties.Resources.strConfigFileName;
+            this.Config = this.Config.Load();
+            
         }
 
 
