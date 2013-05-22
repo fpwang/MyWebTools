@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Core
+namespace MyWebTools.Core
 {
 	/// <summary>
 	/// 任务活动类。为程序根据Task类中的任务定义安排的活动单元。

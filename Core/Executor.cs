@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Core
+namespace MyWebTools.Core
 {
 	/// <summary>
 	/// 任务执行器类。负责组织任务、对任务中代码进行编译，并组织活动队列。

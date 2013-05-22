@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace AutoSign
+namespace MyWebTools.AutoSign
 {
     public static class Program
     {

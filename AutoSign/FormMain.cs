@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace AutoSign
+namespace MyWebTools.AutoSign
 {
     public partial class FormMain : Form
     {
@@ -21,15 +21,18 @@ namespace AutoSign
             InitializeComponent();
         }
 
+        #region 托盘图标处理相关程序
         private void FormMain_Shown(object sender, EventArgs e)
         {
+            //第一次显示窗体时，将其隐藏，
             this.Visible = false;
             this.Hide();
-            this.Config.ConfigFileName=System.Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)+ Properties.Resources.strConfigFileName;
-            this.Config = this.Config.Load();
-            
-        }
 
+            //设置配置文件路径，读取配置文件,并
+            this.Config.ConfigFileName=System.Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)+ Properties.Resources.strConfigFileName;
+            this.Config.Load();
+            this.ApplyConfig();
+        }
 
         private void toolStripMenuItemExit_Click(object sender, EventArgs e)
         {
@@ -67,8 +70,10 @@ namespace AutoSign
                 this.Hide();
             }
         }
+        #endregion 托盘图标处理相关程序
 
-		/// <summary>
+        #region 程序配置参数处理相关程序
+        /// <summary>
 		/// 程序配置数据
 		/// </summary>
 		public ProgramConfig Config{
@@ -79,6 +84,50 @@ namespace AutoSign
 				m_Config = value;
 			}
 		}
+
+        private void ApplyConfig()
+        {
+            if (this.Config != null)
+            {
+                if (this.Config.MainForm != null)
+                {
+                    if(this.Config.MainForm.Size!=null)
+                    {
+                        if (this.Config.MainForm.Size.Height == 0)
+                        {
+                            this.Config.MainForm.Size = this.Size;
+                        }
+                        else
+                        {
+                            this.Size = this.Config.MainForm.Size;
+                        }
+                    }
+
+                    if (this.Config.MainForm.MaximizeOnStart)
+                    {
+                        this.WindowState = FormWindowState.Maximized;
+                    }
+
+                }
+            }
+        }
+
+        private void FormMain_SizeChanged(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Normal)
+            {
+                this.Config.MainForm.Size = this.Size;
+            }          
+        }
+
+        private void FormMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (this.Config.Changed)
+            {
+                this.Config.Save();
+            }
+        }
+        #endregion 程序参数处理相关程序
 
     }
 }

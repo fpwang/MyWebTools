@@ -7,15 +7,18 @@ using System.Windows.Forms;
 using Newtonsoft.Json;
 using System.Text.RegularExpressions;
 
-namespace AutoSign
+namespace MyWebTools.AutoSign
 {
+    /// <summary>
+    /// 应用程序配置参数
+    /// </summary>
     public class ProgramConfig
     {
 
         /// <summary>
         /// 主窗体参数
         /// </summary>
-        private FormConfig m_MainForm = new FormConfig();
+        private MainFormConfig m_MainForm = new MainFormConfig();
         /// <summary>
         /// 配置文件名
         /// </summary>
@@ -28,17 +31,20 @@ namespace AutoSign
 
         public ProgramConfig()
         {
-            this.MainForm.FormConfigChanged += MainForm_FormConfigChanged;
+            //注册子配置对象改变事件处理函数
+            this.m_MainForm.FormConfigChanged += MainForm_FormConfigChanged;
         }
 
-        void MainForm_FormConfigChanged(object sender, EventArgs e)
+        private void MainForm_FormConfigChanged(object sender, ConfigChangeEventArgs e)
         {
-            this.Changed = true;
+            //主窗体配置参数改变时，标记参数发生改变，需进行保存
+            this.Changed=true;
         }
+
         /// <summary>
         /// 主窗体参数
         /// </summary>
-        public FormConfig MainForm
+        public MainFormConfig MainForm
         {
             get
             {
@@ -85,16 +91,16 @@ namespace AutoSign
         /// 从配置文件中读取配置参数
         /// </summary>
         /// <param name="ConfigFileName">配置文件名</param>
-        public ProgramConfig Load(string configFileName)
+        public void Load(string configFileName)
         {
             this.ConfigFileName = configFileName;
-            return this.Load();
+            this.Load();
         }
 
         /// <summary>
         /// 从配置文件中读取配置参数，
         /// </summary>
-        public ProgramConfig Load()
+        public void Load()
         {
             ProgramConfig cfg=null;
             if (this.ConfigFileName != null && File.Exists(this.ConfigFileName))
@@ -108,7 +114,12 @@ namespace AutoSign
                     cfg = JsonConvert.DeserializeObject<ProgramConfig>(json, setting);
                 }
             }
-            return cfg;
+            if (cfg != null)
+            {
+                //将读取的配置参数从临时变量复制到正式的配置变量中
+                this.MainForm.Copy(cfg.MainForm);
+            }
+            this.Changed = false;
         }
 
         /// <summary>
@@ -118,25 +129,32 @@ namespace AutoSign
         {
             if (this.Changed)
             {
-                DialogResult dr = DialogResult.Cancel;
+                bool retry = false;
                 do
                 {
                     try
                     {
                         string j = Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+                        string path=Path.GetDirectoryName(this.ConfigFileName);
+                        if (!Directory.Exists(path))
+                        {
+                            Directory.CreateDirectory(path);
+                        }
                         using (StreamWriter w = new StreamWriter(this.ConfigFileName))
                         {
                             w.Write(j);
                             w.Close();
                             this.Changed = false;
+                            retry = false;
                         }
                     }
                     catch (IOException)
                     {
                         string s = Regex.Replace(Properties.Resources.strSaveFileErrorMessage, "{filename}", ConfigFileName);//?
-                        dr = MessageBox.Show(s, Properties.Resources.strFileErrorMessageBoxTitle, MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
+                        DialogResult dr=MessageBox.Show(s, Properties.Resources.strFileErrorMessageBoxTitle, MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
+                        retry=(dr == DialogResult.Retry);
                     }
-                } while (dr == DialogResult.Retry);
+                } while (retry);
 
             }
         }
@@ -144,21 +162,11 @@ namespace AutoSign
         /// <summary>
         /// 将配置参数存储到配置文件中
         /// </summary>
-        /// <param name="ConfigFileName"></param>
+        /// <param name="ConfigFileName">配置文件名</param>
         public void Save(String ConfigFileName)
         {
             this.ConfigFileName = ConfigFileName;
             this.Save();
         }
-
-        /// <summary>
-        /// 使用反射将临时变量中所有属性复制到this的属性中
-        /// </summary>
-        /// <param name="tmp">要复制属性的临时变量</param>
-        private void CloneProperties(ProgramConfig tmp)
-        {
-            
-        }
-
     }
 }

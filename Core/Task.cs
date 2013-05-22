@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Core
+namespace MyWebTools.Core
 {
 	/// <summary>
 	/// 任务执行周期类型，按天执行、按小时执行、按分钟执行
